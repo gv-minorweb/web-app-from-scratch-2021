@@ -15,7 +15,7 @@ const routes = {
 
 export async function handleRoutes() {
   const app = document.querySelector('#app')
-  const content = app.querySelector('main')
+  const content = app.querySelector('.content')
   
   let urlPath = location.hash.slice(1).toLowerCase() || '/'
   let { path, queryKey: query } = parseuri(`${location.origin}${urlPath}`)
