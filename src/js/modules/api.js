@@ -15,10 +15,10 @@ export async function getData(endpoint, appendTo) {
   const parsedEndpoint = endpoint.replaceAll(/\//g, '-')
 
   if(localStorage[parsedEndpoint]) {
-    console.log('Data found in localstorage, fetching locally')
+    console.log(`Data found in localstorage, fetching "${endpoint}" locally`)
     return Promise.resolve(JSON.parse(localStorage[parsedEndpoint]))
   } else {
-    console.log('Data not found in localstorage, fetching from API')
+    console.log(`Data not found in localstorage, fetching "${endpoint}" from API`)
 
     const response = await fetch(requestURL)
       .then((response) => {
@@ -37,7 +37,6 @@ export async function getData(endpoint, appendTo) {
         console.error(err)
       })
 
-    console.log(response)
     return response
   }
 }
