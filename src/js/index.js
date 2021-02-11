@@ -8,7 +8,10 @@ const app = {
 }
 
 // Listen on hash change
-window.addEventListener('hashchange', handleRoutes)
+window.addEventListener('hashchange', () => {
+  console.log('Hash changed')
+  handleRoutes()
+})
 
 // Initialize app
 app.init()
