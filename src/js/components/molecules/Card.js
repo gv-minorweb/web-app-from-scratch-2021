@@ -7,7 +7,7 @@ function Card({
     title,
     release_date,
     backdrop_path,
-    media_type
+    media_type = 'movie'
   } = data
 
   const {
