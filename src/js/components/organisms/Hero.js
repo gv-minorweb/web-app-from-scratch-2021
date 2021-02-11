@@ -1,3 +1,4 @@
+import Button from '../atoms/Button.js'
 import Slider from '../organisms/Slider.js'
 
 function Hero({
@@ -21,15 +22,19 @@ function Hero({
   <article class="hero" data-id="${id}">
     <div class="hero__content">
       <div class="container">
-      <p>${release_date.split('-', 1)[0]}</p>
-      <h1>${title}</h1>
-      <p>${overview}</p>
+        <p class="hero__content__release" >${release_date.split('-', 1)[0]}</p>
+        <h1 class="hero__content__title" >${title}</h1>
+        <p class="hero__content__description" >${overview}</p>
+        ${Button({
+          text: 'View trailer',
+          href: `#/?play=${id}`
+        })}
       </div>
     </div>
 
     <div class="hero__nav row">
       <div class="container">
-        <h2 class="row__header">Trending Movies</h2>
+        <h2 class="row__header">In Theatres</h2>
       </div>
       ${Slider({data, activeItem})}
     </div>

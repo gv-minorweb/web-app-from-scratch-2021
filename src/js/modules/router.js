@@ -1,28 +1,23 @@
-import { getData } from './api.js';
-import { loader } from './loader.js';
-import { render } from './render.js';
+import { render } from './render.js'
 
 // Vendor
 import { parseuri } from '../vendor/parseuri.js'
 
 // Pages
 import Index from '../pages/index.js'
+import Movies from '../pages/movies.js'
 import Error404 from '../pages/Error404.js'
 
 const routes = {
-  '/': Index
+  '/': Index,
+  '/movies': Movies
 }
-
 export async function handleRoutes() {
-  const app = document.querySelector('#app')
-  const content = app.querySelector('.content')
-  
-  let urlPath = location.hash.slice(1).toLowerCase() || '/'
-  let { path, queryKey: query } = parseuri(`${location.origin}${urlPath}`)
+  const urlPath = location.hash.slice(1).toLowerCase() || '/'
+  const { path, queryKey: query } = parseuri(`${location.origin}${urlPath}`)
+  const page = routes[path] ? routes[path] : Error404
 
-  console.log(path);
-  console.log(query);
+  console.log(path, query)
 
-  let page = routes[path] ? routes[path] : Error404
-  content.innerHTML = await page()
+  render({ page, query })
 }

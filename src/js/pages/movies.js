@@ -1,7 +1,7 @@
-const Error404 = {
+const Movies = {
   async render() {
     return /*html*/`
-    <h1>404 not found</h1>
+    <h1>Movies</h1>
     `
   },
   async mounted() {
@@ -9,4 +9,4 @@ const Error404 = {
   }
 }
 
-export default Error404
+export default Movies
