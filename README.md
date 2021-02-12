@@ -22,4 +22,10 @@ Can't decide what movie or TV show you should watch next? Scrolling endlessly on
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 
+## Actor diagram
+![Actor Diagram v1.0](docs/actor-diagram.png)
+
+## Actor diagram
+![Interaction Diagram v1.0](docs/interaction-diagram.png)
+
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
