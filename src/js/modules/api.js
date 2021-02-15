@@ -32,7 +32,7 @@ export async function getData(endpoint, appendTo) {
       .then((response) => response.json())
       // Add to localstorage
       .then((response) => {
-        store.set(parsedEndpoint, JSON.stringify(response))
+        store.set(parsedEndpoint, response)
         return response
       })
       .catch((err) => {
