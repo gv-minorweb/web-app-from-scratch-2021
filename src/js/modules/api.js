@@ -1,3 +1,5 @@
+import { store } from '../modules/store.js'
+
 /**
  * API module, retrieves data.
  * @module
@@ -14,12 +16,12 @@ export async function getData(endpoint, appendTo) {
   // Replaces trending/movie/week with trending-movie-week
   const parsedEndpoint = endpoint.replaceAll(/\//g, '-')
 
-  if(localStorage[parsedEndpoint]) {
-    console.log(`Data found in localstorage, fetching "${endpoint}" locally`)
-    return Promise.resolve(JSON.parse(localStorage[parsedEndpoint]))
-  } else {
-    console.log(`Data not found in localstorage, fetching "${endpoint}" from API`)
+  // Check if data is already in localstorage
+  const local = store.get(parsedEndpoint)
 
+  if(local) {
+    return Promise.resolve(local)
+  } else {
     const response = await fetch(requestURL)
       .then((response) => {
         if (!response.ok) {
@@ -30,7 +32,7 @@ export async function getData(endpoint, appendTo) {
       .then((response) => response.json())
       // Add to localstorage
       .then((response) => {
-        localStorage.setItem(parsedEndpoint, JSON.stringify(response))
+        store.set(parsedEndpoint, JSON.stringify(response))
         return response
       })
       .catch((err) => {
