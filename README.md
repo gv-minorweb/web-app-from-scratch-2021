@@ -2,7 +2,7 @@
 
 Can't decide what movie or TV show you should watch next? Scrolling endlessly on Netflix to find something you like? No more! This application allows you to binge watch all of the latest and greatest trailers to find that perfect match with ease.
 
-![](https://i.imgur.com/9z0DF4c.png)
+![](docs/preview.png)
 
 <!-- Add a link to your live demo in Github Pages 🌐-->
 
@@ -21,6 +21,12 @@ Can't decide what movie or TV show you should watch next? Scrolling endlessly on
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+
+## Live demo
+[What To Watch](https://gv-minorweb.github.io/what-to-watch/src/)
+
+## API
+This application uses data from [TheMovieDB](https://developers.themoviedb.org/3/).
 
 ## Actor diagram
 ![Actor Diagram v1.0](docs/actor-diagram.png)
