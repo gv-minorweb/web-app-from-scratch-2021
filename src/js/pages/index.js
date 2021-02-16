@@ -1,11 +1,13 @@
 import { getData } from '../modules/api.js'
 
+// Utils
+import parseHash from '../utils/parseHash.js'
+
 // Components
 import Hero from '../components/organisms/Hero.js'
 
 const Index = {
   async render() {
-    console.log('render')
     const data = await getData('movie/now_playing')
     const { results } = data
 
@@ -14,8 +16,6 @@ const Index = {
     `
   },
   async mounted() {
-    console.log('mounted')
-
     const hero = document.querySelector('.hero')
     const heroTitle = hero.querySelector('.hero__content__title')
     const heroRelease = hero.querySelector('.hero__content__release')
@@ -35,10 +35,12 @@ const Index = {
         videos
       } = movieData
 
-      heroTitle.innerHTML = title
-      heroRelease.innerHTML = release_date.split('-', 1)[0]
+      const { path } = parseHash()
+
+      heroTitle.innerText = title
+      heroRelease.innerText = release_date.split('-', 1)[0]
       heroDescription.innerHTML = overview
-      heroButton.setAttribute('href', `#/?play=${id}`)
+      heroButton.setAttribute('href', `#${path}?play=${id}`)
 
       heroBg.querySelector('img').src = `https://image.tmdb.org/t/p/original${backdrop_path}`
       heroBg.querySelector('img').setAttribute('alt', title)
