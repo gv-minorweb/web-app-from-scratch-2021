@@ -19,7 +19,7 @@ function Card({
     class="card"
     data-id="${id}"
   >
-    ${link ? `<a href="#/${media_type}/${link}">` : ''}
+    ${link ? `<a href="#${media_type}/${link}">` : ''}
       <h3>${title}</h3>
       <p>${release_date}</p>
       <div class="card__background">

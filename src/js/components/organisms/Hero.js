@@ -1,3 +1,7 @@
+// Utils
+import parseHash from '../../utils/parseHash.js'
+
+// Components
 import Button from '../atoms/Button.js'
 import Slider from '../organisms/Slider.js'
 
@@ -15,8 +19,8 @@ function Hero({
     backdrop_path
   } = heroData
 
-  // To do:
-  // Limit overview text to x characters (split sentences, render max sentences)
+  // The path is used to prepend the link
+  const { path } = parseHash()
 
   return /*html*/`
   <article class="hero" data-id="${id}">
@@ -27,7 +31,7 @@ function Hero({
         <p class="hero__content__description" >${overview}</p>
         ${Button({
           text: 'View trailer',
-          href: `#/?play=${id}`
+          href: `#${path}?play=${id}`
         })}
       </div>
     </div>
