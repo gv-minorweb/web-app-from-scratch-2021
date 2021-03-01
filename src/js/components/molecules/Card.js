@@ -10,9 +10,7 @@ function Card({
     media_type = 'movie'
   } = data
 
-  const {
-    link
-  } = options
+  const { link } = options
 
   return `
   <div
@@ -20,8 +18,10 @@ function Card({
     data-id="${id}"
   >
     ${link ? `<a href="#${media_type}/${link}">` : ''}
-      <h3>${title}</h3>
-      <p>${release_date}</p>
+      <div class="card__content">
+        <h3>${title}</h3>
+        <p>${release_date.split('-')[0]}</p>
+      </div>
       <div class="card__background">
         <img src="https://image.tmdb.org/t/p/original${backdrop_path}" alt="${title}" />
       </div>

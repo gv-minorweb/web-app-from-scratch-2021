@@ -25,6 +25,14 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   --easeInOutCubic: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
+/* Fonts */
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('../fonts/NeueMontreal-Bold.otf');
+  font-style: normal;
+  font-weight: 600;
+}
+
 /* Base */
 
 html {
@@ -51,10 +59,24 @@ body {
   overflow: hidden;
 }
 
-#app > footer {
+.footer {
   margin-top: auto;
   padding: 30px 0;
   color: var(--color-grey);
+}
+
+.footer .credits {
+  display: flex;
+  align-items: center;
+}
+
+.footer .credits__logo {
+  font-size: 0;
+  margin-right: 2rem;
+}
+
+.footer .credits__logo img {
+  height: 14px
 }
 
 .container {
@@ -152,7 +174,7 @@ button, .button {
   width: 100%;
   height: calc((9 / 16) * 100vw);
   max-height: calc(100vh - 20px);
-  min-height: 520px;
+  min-height: 640px;
   margin-bottom: 60px;
 }
 
@@ -239,8 +261,12 @@ button, .button {
   white-space: normal;
 }
 
-.slider__list__item.active .card {
+.slider__list__item.active .card a {
   box-shadow: inset 0 0 0 2px var(--color-primary), inset 0 0 0 6px var(--color-background);
+}
+
+.slider__list__item:not(.active) .card a:hover {
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 20%), inset 0 0 0 6px var(--color-background);
 }
 
 .slider__control {
@@ -278,6 +304,7 @@ button, .button {
   border-radius: 10px;
   overflow: hidden;
   outline: 0;
+  transition: box-shadow .06s var(--easeInOutCubic);
 }
 
 .card:focus-within {
@@ -285,16 +312,22 @@ button, .button {
   outline: 0;
 }
 
-.card h3, .card p {
-  display: none;
-}
-
-.card h3 {
-  display: block;
+.card__content {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   bottom: .75em;
   left: 1em;
   right: 1em;
+}
+
+.card__content h3 {
+  display: block;
+}
+
+.card__content p {
+  display: none;
+  color: #969696;
 }
 
 .card__background {
@@ -312,7 +345,7 @@ button, .button {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.5) 100%);
+  background: linear-gradient(180deg, rgba(17, 17, 17, 0.15) 40%, rgba(17, 17, 17, 0.75) 100%);
 }
 
 .card__background img {

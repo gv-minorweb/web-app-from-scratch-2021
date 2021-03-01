@@ -1,5 +1,5 @@
 // Utils
-import parseHash from '../../utils/parseHash.js'
+import { parseHash } from '../../utils/parseHash.js'
 
 // Components
 import Button from '../atoms/Button.js'
