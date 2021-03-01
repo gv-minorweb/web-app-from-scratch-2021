@@ -1,7 +1,13 @@
 // Utils
-import parseHash from '../../utils/parseHash.js'
-import clearElement from '../../utils/clearElement.js'
+import { parseHash } from '../../utils/parseHash.js'
+import { clearElement } from '../../utils/clearElement.js'
 
+/**
+ * A modal/popup that pops up over the site content.
+ * @param {Object} modal
+ * @param {string} site - Video source website
+ * @param {string} id - Video ID
+ */
 async function Modal({
   site = 'youtube',
   id
@@ -34,11 +40,18 @@ async function Modal({
     }
   }
 
-  const content = `
-  ${site === 'youtube'
-    ? `<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
-    : ''
-  }`
+  // Modal content
+  let content
+
+  // Currently only youtube is used
+  switch (site) {
+    case 'youtube':
+      content = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+      break
+    case 'vimeo':
+      content = `<iframe title="vimeo-player" src="https://player.vimeo.com/video/${id}" width="640" height="360" frameborder="0" allowfullscreen></iframe>`
+      break
+  }
 
   // Place content inside element
   modalContent.insertAdjacentHTML('afterbegin', content)

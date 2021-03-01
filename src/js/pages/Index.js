@@ -1,7 +1,7 @@
 import { getData } from '../modules/api.js'
 
 // Utils
-import parseHash from '../utils/parseHash.js'
+import { parseHash } from '../utils/parseHash.js'
 
 // Components
 import Hero from '../components/organisms/Hero.js'
@@ -37,8 +37,10 @@ const Index = {
 
       const { path } = parseHash()
 
+      const releaseYear = release_date.split('-', 1)[0]
+
       heroTitle.innerText = title
-      heroRelease.innerText = release_date.split('-', 1)[0]
+      heroRelease.innerText = releaseYear
       heroDescription.innerHTML = overview
       heroButton.setAttribute('href', `#${path}?play=${id}`)
 

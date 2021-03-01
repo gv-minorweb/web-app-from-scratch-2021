@@ -1,23 +1,29 @@
+// Modules
 import { getData } from '../modules/api.js'
 
-import Header from '../components/organisms/Header.js'
+// Utils
+import { clearElement } from '../utils/clearElement.js'
+
+// Components
 import Modal from '../components/organisms/Modal.js'
 
-export async function render({ page, params }) {
+/**
+ * Render the page.
+ * @param {Object} route - The route that should be rendered.
+ * @param {string} route.page - The route's value.
+ * @param {Object} [route.params] - The route's (query) parameters.
+ */
+async function render({ page, params }) {
   const app = document.querySelector('#app')
   const content = app.querySelector('.content')
 
   // Load content
-  const header = Header()
-  const pageContent = page.render()
+  const pageContent = await page.render()
 
-  // Check if header doesn't exists already
-  if (!document.querySelector('.header')) {
-    app.insertAdjacentHTML('afterbegin', header)
-  }
-
-  // Render page content
-  content.innerHTML = await pageContent
+  // Clear the content first, then load the new content
+  clearElement(content, () => {
+    content.insertAdjacentHTML('afterbegin', pageContent)
+  })
 
   // If the url has 'play' query, show modal
   const videoId = params?.play
@@ -33,3 +39,5 @@ export async function render({ page, params }) {
   // After render
   await page.mounted()
 }
+
+export { render }
